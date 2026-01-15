@@ -17,11 +17,13 @@ def create_person_list(people: list) -> list:
         person = person_list[i]
 
         wife_name = person_data.get("wife")
-        if wife_name is not None and wife_name in Person.people:
-            person.wife = Person.people[wife_name]
+        wife_person = Person.people.get(wife_name)
+        if wife_name is not None and wife_person is not None:
+            person.wife = wife_person
 
         husband_name = person_data.get("husband")
-        if husband_name is not None and husband_name in Person.people:
-            person.husband = Person.people[husband_name]
+        husband_person = Person.people.get(husband_name)
+        if husband_name is not None and husband_person is not None:
+            person.husband = husband_person
 
     return person_list
