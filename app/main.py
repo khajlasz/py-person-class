@@ -36,28 +36,3 @@ def create_person_list(people: list) -> list:
                 person.husband = Person.people[husband_name]
 
     return person_list
-
-
-if __name__ == "__main__":
-    people = [
-        {"name": "Ross", "age": 30, "wife": "Rachel"},
-        {"name": "Joey", "age": 29, "wife": None},
-        {"name": "Rachel", "age": 28, "husband": "Ross"}
-    ]
-
-    person_list = create_person_list(people)
-    print(isinstance(person_list[0], Person))  # Should print: True
-    print(person_list[0].name)  # Should print: Ross
-    print(person_list[0].wife is person_list[2])  # Should print: True
-    print(person_list[0].wife.name)  # Should print: Rachel
-
-    print(person_list[1].name)  # Should print: Joey
-    print(getattr(person_list[1], "wife", None))  # Should print: None
-
-    print(isinstance(person_list[2], Person))  # Should print: True
-    print(person_list[2].name)  # Should print: Rachel
-    print(person_list[2].husband is person_list[0])  # Should print: True
-    print(person_list[2].husband.name)  # Should print: Ross
-    print(person_list[2].husband.wife is person_list[2])  # Should print: True
-
-    print(Person.people)
